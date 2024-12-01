@@ -4,7 +4,7 @@ function parseInput(input) {
   const secondList = [];
 
   for (const line of lines) {
-    const [firstNumber, secondNumber] = line.split("   ").map(Number);
+    const [firstNumber, secondNumber] = line.split(/\s+/).map(Number);
     firstList.push(firstNumber);
     secondList.push(secondNumber);
   }
@@ -19,7 +19,7 @@ module.exports = function (input) {
 
   // Loop over list and sum differences
   const result = firstList.reduce((sum, current, index) => {
-    const diff = Math.abs(firstList[index] - secondList[index]);
+    const diff = Math.abs(current - secondList[index]);
     return sum + diff;
   }, 0);
 
